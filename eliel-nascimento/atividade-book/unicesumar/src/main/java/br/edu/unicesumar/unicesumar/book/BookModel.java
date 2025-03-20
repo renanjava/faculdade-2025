@@ -16,6 +16,8 @@ public class BookModel {
 
     private String autor;
 
+    private BookStatus statusLivro;
+
     public Long getId() {
         return id;
     }
@@ -38,5 +40,13 @@ public class BookModel {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public String getStatus() {
+        return statusLivro.name();
+    }
+
+    public void setStatus(BookStatus statusLivro) {
+        this.statusLivro = statusLivro;
     }
 }

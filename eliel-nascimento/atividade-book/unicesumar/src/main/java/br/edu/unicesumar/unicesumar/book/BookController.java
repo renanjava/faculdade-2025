@@ -57,4 +57,15 @@ public class BookController {
         }
     }
 
+    @GetMapping("status")
+    public ResponseEntity<String> statusBookData(@RequestParam(value = "bookId") Long bookId){
+        try {
+            bookService.findByStatus(bookId);
+            return new ResponseEntity<>(HttpStatusCode.valueOf(200));
+        }
+        catch (Exception e){
+            return new ResponseEntity<>(HttpStatusCode.valueOf(500));
+        }
+    }
+
 }
