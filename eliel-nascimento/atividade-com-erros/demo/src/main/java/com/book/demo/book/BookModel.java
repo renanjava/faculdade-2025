@@ -6,8 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "TBL_BOOK")
 public class BookModel {
 
-
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
      private String nome;
      private String categoria;
@@ -16,13 +15,15 @@ public class BookModel {
      public BookModel(){
      }
 
-    public BookModel(String nome, String categoria) {
+    public BookModel(Long id, String nome, String categoria, String senha) {
         this.nome = nome;
         this.categoria = categoria;
+        this.id = id;
+        this.senha = senha;
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -36,7 +37,7 @@ public class BookModel {
     }
 
     public String getCategoria() {
-        return categoria;
+        return this.categoria;
     }
 
     public void setCategoria(String categoria) {
@@ -44,11 +45,11 @@ public class BookModel {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
 
     public void setSenha(String senha) {

@@ -5,13 +5,14 @@ public class BookDTO {
     private Long id;
     private String nome;
     private String categoria;
+    private String senha;
 
     public BookModel transformaParaObjeto(){
-        return new BookModel(null,categoria);
+        return new BookModel(this.id, this.nome, this.categoria, this.senha);
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -19,7 +20,7 @@ public class BookDTO {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -27,10 +28,14 @@ public class BookDTO {
     }
 
     public String getCategoria() {
-        return categoria;
+        return this.categoria;
     }
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+    public void setSenha(String senha) { this.senha = senha; }
+
+    public String getSenha() { return this.senha; }
 }

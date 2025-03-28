@@ -9,24 +9,25 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/books")
+@RequestMapping("/books")
 public class BookController {
 
     @Autowired
-    private BookService bookService;
+    BookService bookService;
+
     @GetMapping
-    private ResponseEntity<List<BookModel>> findAll(){
-        List<BookModel> bookModel = bookService.findAll();
+    public ResponseEntity<List<BookModel>> findAll(){
+        List<BookModel> bookModel = this.bookService.findAll();
         return ResponseEntity.ok().body(bookModel);
     }
     @PostMapping
-    private ResponseEntity<BookModel> criarLivro(@RequestBody BookDTO bookModel){
-        BookModel response = bookService.criarLivro(bookModel.transformaParaObjeto());
+    public ResponseEntity<BookModel> criarLivro(@RequestBody BookModel bookModel){
+        BookModel response = this.bookService.criarLivro(bookModel);
         return ResponseEntity.ok().body(response);
     }
     @DeleteMapping("/{id}")
-    private ResponseEntity<?> deletarPeloId(@PathVariable Long id){
-        bookService.deletarLivro(id);
+    public ResponseEntity<?> deletarPeloId(@PathVariable Long id){
+        this.bookService.deletarLivro(id);
         return ResponseEntity.noContent().build();
     }
 

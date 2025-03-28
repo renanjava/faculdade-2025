@@ -12,12 +12,12 @@ public class BookService {
     private BookRepository bookRepository;
 
     public List<BookModel> findAll(){
-        return bookRepository.findAll();
+        return this.bookRepository.findAll();
     }
     public BookModel criarLivro(BookModel bookModel){
-        return bookRepository.save(bookModel);
+        return this.bookRepository.save(bookModel);
     }
     public void deletarLivro(Long id){
-        bookRepository.deleteById(id);
+        this.bookRepository.deleteById(id);
     }
 }
